@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Profile Card</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      color: #e2e8f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    article {
+      background: #1e293b;
+      border-radius: 16px;
+      padding: 20px;
+      max-width: 800px;
+      width: 100%;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+
+    header h2 {
+      font-size: 1.8rem;
+      margin-bottom: 8px;
+    }
+
+    .profile-main {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    figure {
+      text-align: center;
+    }
+
+    img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #38bdf8;
+    }
+
+    figcaption {
+      margin-top: 8px;
+      font-size: 0.9rem;
+      color: #94a3b8;
+    }
+
+    .content {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #38bdf8;
+      background: #0f172a;
+      padding: 6px 10px;
+      border-radius: 6px;
+      transition: 0.2s;
+    }
+
+    nav a:hover,
+    nav a:focus {
+      background: #38bdf8;
+      color: #0f172a;
+      outline: none;
+    }
+
+    section ul {
+      list-style: disc;
+      margin-left: 20px;
+    }
+
+    .lists {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .time {
+      font-size: 0.9rem;
+      color: #94a3b8;
+    }
+
+    a:focus {
+      outline: 2px solid #38bdf8;
+      outline-offset: 2px;
+    }
+
+    @media (min-width: 768px) {
+      .profile-main {
+        flex-direction: row;
+        align-items: center;
+      }
+
+      figure {
+        flex: 0 0 150px;
+      }
+
+      .content {
+        flex: 1;
+      }
+
+      .lists {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<article data-testid="test-profile-card">
+  
+  <header>
+    <h2 data-testid="test-user-name">CK Developer</h2>
+  </header>
+
+  <div class="profile-main">
+
+    <figure>
+      <img 
+        src="profile/profile picture.avif" 
+        alt="Portrait of CK Developer "
+        data-testid="test-user-avatar"
+      />
+      <figcaption>Frontend Developer</figcaption>
+    </figure>
+
+    <div class="content">
+
+      <p data-testid="test-user-bio">
+        Passionate developer who loves building interactive web apps, solving problems,
+        and learning new technologies like JavaScript, React, and game development.
+      </p>
+
+      <p class="time" data-testid="test-user-time" aria-live="polite"></p>
+
+      <nav>
+        <ul data-testid="test-user-social-links">
+          <li>
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer"
+               data-testid="test-user-social-twitter">Twitter</a>
+          </li>
+          <li>
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer"
+               data-testid="test-user-social-github">GitHub</a>
+          </li>
+          <li>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer"
+               data-testid="test-user-social-linkedin">LinkedIn</a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="lists">
+
+        <section>
+          <h3>Hobbies</h3>
+          <ul data-testid="test-user-hobbies">
+            <li>Programming</li>
+            <li>Drawing</li>
+            
+            <li>Reading</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Dislikes</h3>
+          <ul data-testid="test-user-dislikes">
+            <li>Slow internet</li>
+            <li>Bugs without clear errors</li>
+            <li>Messy code</li>
+          </ul>
+        </section>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</article>
+
+<script>
+  const timeElement = document.querySelector('[data-testid="test-user-time"]');
+
+  function updateTime() {
+    timeElement.textContent = Date.now();
+  }
+
+  updateTime();
+  setInterval(updateTime, 1000);
+</script>
+
+</body>
+</html>
